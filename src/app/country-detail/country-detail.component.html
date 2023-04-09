@@ -1,0 +1,87 @@
+<div>
+    <app-header></app-header>
+</div>
+<div *ngIf="isLoading" class="myprogress">
+    <div><mat-spinner [diameter]="40" ></mat-spinner></div>
+    <div><p>One Moment Please!!</p></div>
+    <div><p>Getting your Country details!!
+    </p></div>
+  </div>
+<div class="container" *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-md-6 mydiv">
+        <div><p>Country Flag</p></div>
+        <img [src]="dataSource.flags.png" [alt]="dataSource.flags.alt" />
+    </div>
+    <div class="col-md-6 mydiv2">
+        <p class="detail">Country Details</p>
+        <div class="table-responsive">
+            <table class="table align-middle  table-borderless">
+              <tbody>
+                <tr>
+                    <th scope="row">Country Name : </th>
+                    <td>{{dataSource.name.common}}</td>
+                </tr>
+                <tr *ngIf="dataSource.area">
+                    <th scope="row">Country Area :</th>
+                    <td>{{dataSource.area}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Country Population :</th>
+                    <td>{{dataSource.population}}</td>
+                </tr>
+                <tr *ngIf="dataSource.capital">
+                    <th scope="row">Capital :</th>
+                    <td>{{dataSource.capital[0]}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Continent :</th>
+                    <td>{{dataSource.continents[0]}}</td>
+                </tr>
+                <tr *ngIf="dataSource.coatOfArms &&( dataSource.coatOfArms.svg)">
+                    <th scope="row">Country Coat Of Arms:</th>
+                    <td><img [src]="dataSource.coatOfArms.svg" width="70px" height="70px"></td>
+                </tr>
+                <tr *ngIf="dataSource.borders && dataSource.borders.length>0">
+                    <th scope="row">Neighbour Countries :</th>
+                    <td>
+                        <button mat-raised-button style="margin-right: 3px; margin-bottom: 3px; display: flex;" *ngFor="let country of dataSource.borders">{{country}}</button>
+                    </td>
+                </tr>
+                <tr *ngIf="dataSource.independent">
+                    <th scope="row">Independent Country:</th>
+                    <td>{{dataSource.independent ? 'Yes' : 'No'}}</td>
+                </tr>
+                <tr *ngIf="dataSource.region">
+                    <th scope="row">Region :</th>
+                    <td>{{dataSource.region}}</td>
+                </tr>
+                <tr *ngIf="dataSource.tld">
+                    <th scope="row">Top-level-domain :</th>
+                    <td>{{dataSource.tld[0]}}</td>
+                </tr>
+                <tr *ngIf="dataSource.startOfWeek">
+                    <th scope="row">Start Of Week :</th>
+                    <td>{{dataSource.startOfWeek}}</td>
+                </tr>
+                <tr *ngIf="dataSource.subregion">
+                    <th scope="row">Sub-Region :</th>
+                    <td>{{dataSource.subregion}}</td>
+                </tr>
+                <tr *ngIf="dataSource.maps">
+                    <th scope="row">Google Map Location :</th>
+                    <td><a [href]="dataSource.maps.googleMaps">Click</a></td>
+                </tr>
+                <tr *ngIf="dataSource.flag">
+                    <th scope="row">Country Symbol :</th>
+                    <td>{{dataSource.flag}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+  </div>
+</div>
+<div>
+    <app-footer></app-footer>
+</div>

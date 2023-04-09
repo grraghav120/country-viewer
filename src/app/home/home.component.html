@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div *ngIf="isLoading" class="myprogress">
+  <div><mat-spinner [diameter]="40" ></mat-spinner></div>
+  <div><p>One Moment Please!!</p></div>
+</div>
+<div class="myTable" *ngIf="!isLoading">
+  <!-- <div class="row">
+    <div class="col-md-6"><input matInput type="text" placeholder="Search"></div>
+    <div class="col-md-6"><input matInput type="text" placeholder="Sort" ></div>
+  </div> -->
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"
+        ><p
+          style="
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+              sans-serif;
+          "
+        >
+          {{ element.flag }}
+        </p></mat-cell
+      >
+    </ng-container>
+    <ng-container matColumnDef="flag">
+      <mat-header-cell *matHeaderCellDef> Flag </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img
+          [src]="element.flags.png"
+          width="100px"
+          height="70px"
+          style="margin-top: 15px; margin-bottom: 15px"
+        />
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.name.common }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="continents">
+      <mat-header-cell *matHeaderCellDef> Continents </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.continents[0] }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="population">
+      <mat-header-cell *matHeaderCellDef> Population </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.population }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="area">
+      <mat-header-cell *matHeaderCellDef> Area </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.area }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="button">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button matTooltip="Details" (click)="onClickCountry(element)">
+          <mat-icon>arrow_right_alt</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator> -->
+</div>
+<div>
+  <app-footer></app-footer>
+</div>
