@@ -23,9 +23,9 @@
         </p></mat-cell
       >
     </ng-container>
-    <ng-container matColumnDef="flag">
-      <mat-header-cell *matHeaderCellDef> Flag </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+    <ng-container matColumnDef="flag" >
+      <mat-header-cell *matHeaderCellDef class="hide-mobile"> Flag </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="hide-mobile">
         <img
           [src]="element.flags.png"
           width="100px"
@@ -49,8 +49,8 @@
       <mat-cell *matCellDef="let element"> {{ element.population }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="area">
-      <mat-header-cell *matHeaderCellDef> Area </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.area }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef class="hide-mobile"> Area </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="hide-mobile"> {{ element.area }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="button">
       <mat-header-cell *matHeaderCellDef> </mat-header-cell>
