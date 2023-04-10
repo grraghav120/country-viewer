@@ -18,7 +18,7 @@
         <div class="table-responsive">
             <table class="table align-middle  table-borderless">
               <tbody>
-                <tr>
+                <tr *ngIf="dataSource.name.common">
                     <th scope="row">Country Name : </th>
                     <td>{{dataSource.name.common}}</td>
                 </tr>
@@ -26,7 +26,7 @@
                     <th scope="row">Country Area :</th>
                     <td>{{dataSource.area}}</td>
                 </tr>
-                <tr>
+                <tr *ngIf="dataSource.population">
                     <th scope="row">Country Population :</th>
                     <td>{{dataSource.population}}</td>
                 </tr>
@@ -34,7 +34,7 @@
                     <th scope="row">Capital :</th>
                     <td>{{dataSource.capital[0]}}</td>
                 </tr>
-                <tr>
+                <tr *ngIf="dataSource.continents[0]">
                     <th scope="row">Continent :</th>
                     <td>{{dataSource.continents[0]}}</td>
                 </tr>
