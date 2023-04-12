@@ -11,7 +11,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FooterComponent } from './footer/footer.component';
@@ -27,12 +28,14 @@ import { CountryDetailComponent } from './country-detail/country-detail.componen
     CountryDetailComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
+    FormsModule,
     // FlexLayoutModule,
     MatToolbarModule,
     MatProgressSpinnerModule,

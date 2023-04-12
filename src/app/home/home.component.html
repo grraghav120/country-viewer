@@ -4,10 +4,26 @@
   <div><p>One Moment Please!!</p></div>
 </div>
 <div class="myTable" *ngIf="!isLoading">
-  <!-- <div class="row">
-    <div class="col-md-6"><input matInput type="text" placeholder="Search"></div>
-    <div class="col-md-6"><input matInput type="text" placeholder="Sort" ></div>
-  </div> -->
+  <div class="row">
+    <div class="col-md-6" style="display: flex;">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="searchText" >
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onPress()" >Search</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <select class="form-select" aria-label="Default select example" (change)="onChange($event)">
+        <option selected>Filter Based on Continent</option>
+        <option value="Asia">Asia</option>
+        <option value="North America">North America</option>
+        <option value="Africa">Africa</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+        <option value="Antarctica">Antarctica</option>
+        <option value="South America">South America</option>
+      </select>
+    </div>
+  </div>
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="symbol">
       <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>

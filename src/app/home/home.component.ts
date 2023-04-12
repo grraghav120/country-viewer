@@ -11,10 +11,12 @@ import {MatPaginator} from '@angular/material/paginator';
 export class HomeComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ['symbol','flag', 'name','continents','population','area','button'];
-  isLoading:boolean=true;
+  isLoading:boolean=false;
   allCountries:any=[];
   dataSource:any=[];
   error:any;
+  filterVal:any;
+  searchText:any;
   constructor(public data:DataService,public route:Router){}
 
   // ngAfterViewInit() {
@@ -22,6 +24,10 @@ export class HomeComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.onFetchData();
+  }
+
+  onFetchData(){
     this.isLoading=true;
     this.data.getAllCountries().subscribe((res) => {
       if(res){
@@ -36,8 +42,36 @@ export class HomeComponent implements OnInit {
     }
     });
   }
+
   onClickCountry(element:any){
     this.data.dataSource=element;
     this.route.navigate(['country',element.flag]);
   }
+
+  onPress(){
+    this.data.getSearchByName(this.searchText).subscribe((res)=>{
+      if(res){
+      console.log(res);
+      this.dataSource=res;
+      }
+      else{
+        console.log('error');
+        this.onFetchData();
+      }
+    })
+  }
+
+  onChange(event:any){
+    // console.log(event.target.value);
+    let val=event.target.value;
+    if(val==='Filter Based on Continent'){
+      this.onFetchData();
+    }
+    else{
+    this.data.filterByRegion(val).subscribe((res)=>{
+      this.dataSource=res;
+    })
+    }
+  }
+
 }
